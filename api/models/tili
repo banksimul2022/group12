@@ -2,27 +2,27 @@ const db = require('../database');
 
 const opintojakso = {
   getById: function(id, callback) {
-    return db.query('select * from opintojakso where idOpintojakso=?', [id], callback);
+    return db.query('select * from tili where idtili=?', [id], callback);
   },
   getAll: function(callback) {
-    return db.query('select * from opintojakso', callback);
+    return db.query('select * from tili', callback);
   },
   add: function(opintojakso, callback) {
     return db.query(
-      'insert into opintojakso (koodi,laajuus,nimi) values(?,?,?)',
-      [opintojakso.koodi, opintojakso.laajuus, opintojakso.nimi],
+      'insert into tili (tilinumero,saldo) values(?,?)',
+      [tili.tilinumero, tili.saldo],
       callback
     );
   },
   delete: function(id, callback) {
-    return db.query('delete from opintojakso where idopintojakso=?', [id], callback);
+    return db.query('delete from tili where idtili=?', [id], callback);
   },
-  update: function(idopintojakso, opintojakso, callback) {
+  update: function(idtili, tili, callback) {
     return db.query(
-      'update opintojakso set koodi=?,laajuus=?,nimi=? where idopintojakso=?',
-      [opintojakso.koodi, opintojakso.laajuus, opintojakso.nimi,idopintojakso],
+      'update tili set tilinumero=?,saldo=? where idtili=?',
+      [tili.tilinumero, tili.saldo,idtili],
       callback
     );
   }
 };
-module.exports = opintojakso;
+module.exports = tili;

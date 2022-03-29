@@ -3,6 +3,6 @@ const connection = mysql.createPool({
   host: 'localhost',
   user: 'root',
   password: 'salasana',
-  database: 'arviointi_db'
+  database: 'Banksimul'
 });
 module.exports = connection;
