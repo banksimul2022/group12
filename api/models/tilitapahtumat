@@ -1,4 +1,4 @@
-// Tämä on vielä korjaamatta
+// Tämä on vielä korjaamatta.
 
 const db = require('../database');
 
