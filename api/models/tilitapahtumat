@@ -1,30 +1,31 @@
-// Tämä on vielä korjaamatta.
+
+
 
 const db = require('../database');
 
-const opintojakso = {
+const tilitapahtumat = {
   getById: function(id, callback) {
-    return db.query('select * from opintojakso where idOpintojakso=?', [id], callback);
+    return db.query('select * from tilitapahtumat where tili_idtili=?', [id], callback);
   },
   getAll: function(callback) {
-    return db.query('select * from opintojakso', callback);
+    return db.query('select * from tilitapahtumat', callback);
   },
-  add: function(opintojakso, callback) {
+  add: function(tilitapahtumat, callback) {
     return db.query(
-      'insert into opintojakso (koodi,laajuus,nimi) values(?,?,?)',
-      [opintojakso.koodi, opintojakso.laajuus, opintojakso.nimi],
+      'insert into tilitapahtumat (summa,pvm) values(?,?)',
+      [tilitapahtumat.summa, tilitapahtumat.pvm],
       callback
     );
   },
   delete: function(id, callback) {
-    return db.query('delete from opintojakso where idopintojakso=?', [id], callback);
+    return db.query('delete from tilitapahtumat where tili_idtili=?', [id], callback);
   },
-  update: function(idopintojakso, opintojakso, callback) {
+  update: function(tili_idtili, tilitapahtumat, callback) {
     return db.query(
-      'update opintojakso set koodi=?,laajuus=?,nimi=? where idopintojakso=?',
-      [opintojakso.koodi, opintojakso.laajuus, opintojakso.nimi,idopintojakso],
+      'update tilitapahtumat set summa=?,pvm=? where tili_idtili=?',
+      [tilitapahtumat.summa, tilitapahtumat.pvm,tilitapahtumat.tili_idtili],
       callback
     );
   }
 };
-module.exports = opintojakso;
+module.exports = tilitapahtumat;

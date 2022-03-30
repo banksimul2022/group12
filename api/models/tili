@@ -1,13 +1,13 @@
 const db = require('../database');
 
-const opintojakso = {
+const tili = {
   getById: function(id, callback) {
     return db.query('select * from tili where idtili=?', [id], callback);
   },
   getAll: function(callback) {
     return db.query('select * from tili', callback);
   },
-  add: function(opintojakso, callback) {
+  add: function(tili, callback) {
     return db.query(
       'insert into tili (tilinumero,saldo) values(?,?)',
       [tili.tilinumero, tili.saldo],
