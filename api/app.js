@@ -16,7 +16,7 @@ var tilitapahtumatRouter = require('./routes/tilitapahtumat');
 
 
 var app = express();
-//Kommentti 2
+
 app.use(basicAuth({users: { 'admin': 'salasana' }}))
 app.use(logger('dev'));
 app.use(express.json());
