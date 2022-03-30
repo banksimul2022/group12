@@ -9,14 +9,15 @@ const basicAuth = require('express-basic-auth');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var opiskelijaRouter = require('./routes/opiskelija');
-var opintojaksoRouter = require('./routes/opintojakso');
-var arvosteluRouter = require('./routes/arviointi');
+var asiakasRouter = require('./routes/asiakas');
+var korttiRouter = require('./routes/kortti');
+var tiliRouter = require('./routes/tili');
+var tilitapahtumatRouter = require('./routes/tilitapahtumat');
 
 
 var app = express();
 //Kommentti 2
-app.use(basicAuth({users: { 'admin': 'moro' }}))
+app.use(basicAuth({users: { 'admin': 'salasana' }}))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -29,9 +30,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use("/opiskelijat", opiskelijaRouter);
-app.use("/opintojaksot", opintojaksoRouter);
-app.use("/arvostelut", arvosteluRouter);
+app.use("/asiakas", asiakasRouter);
+app.use("/kortti", korttiRouter);
+app.use("/tili", tiliRouter);
+app.use("/tilitapahtumat", tilitapahtumatRouter);
 
 console.log("Starting server");
 http.createServer(app).listen(3000);
