@@ -37,7 +37,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ER`.`Tili` (
   `idTili` INT NOT NULL,
-  `Tilinumero` INT NOT NULL,
+  `Tilinumero` VARCHAR(45) NOT NULL,
   `Saldo` INT NOT NULL,
   PRIMARY KEY (`idTili`))
 ENGINE = InnoDB;
@@ -48,7 +48,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ER`.`Kortti` (
   `idKortti` INT NOT NULL AUTO_INCREMENT,
-  `Kortinnumero` INT NOT NULL,
+  `Kortinnumero` BIGINT NOT NULL,
   `PIN` VARCHAR(255) NOT NULL,
   `Asiakas_idAsiakas` INT NOT NULL,
   `Tili_idTili` INT NOT NULL,
@@ -73,7 +73,7 @@ ENGINE = InnoDB;
 -- Table `ER`.`Tilitapahtumat`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ER`.`Tilitapahtumat` (
-  `Tilinumero` INT NOT NULL,
+  `Tilinumero` VARCHAR(45) NOT NULL,
   `Summa` INT NOT NULL,
   `Pvm` DATETIME NOT NULL,
   `Tili_idTili` INT NOT NULL,
