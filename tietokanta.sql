@@ -49,7 +49,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `ER`.`Kortti` (
   `idKortti` INT NOT NULL AUTO_INCREMENT,
   `Kortinnumero` INT NOT NULL,
-  `PIN` INT NOT NULL,
+  `PIN` VARCHAR(255) NOT NULL,
   `Asiakas_idAsiakas` INT NOT NULL,
   `Tili_idTili` INT NOT NULL,
   PRIMARY KEY (`idKortti`, `Asiakas_idAsiakas`, `Tili_idTili`),
