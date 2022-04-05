@@ -35,7 +35,5 @@ app.use("/kortti", korttiRouter);
 app.use("/tili", tiliRouter);
 app.use("/tilitapahtumat", tilitapahtumatRouter);
 
-console.log("Starting server");
-http.createServer(app).listen(3000);
 
 module.exports = app;
