@@ -23,7 +23,6 @@ class Ui_pin_window
 {
 public:
     QGridLayout *gridLayout_2;
-    QLabel *label;
     QGridLayout *gridLayout;
     QPushButton *push6;
     QPushButton *push5;
@@ -36,6 +35,8 @@ public:
     QPushButton *push3;
     QPushButton *push0;
     QDialogButtonBox *buttonBox;
+    QLabel *label;
+    QLabel *label_2;
 
     void setupUi(QDialog *pin_window)
     {
@@ -44,11 +45,6 @@ public:
         pin_window->resize(400, 300);
         gridLayout_2 = new QGridLayout(pin_window);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        label = new QLabel(pin_window);
-        label->setObjectName(QString::fromUtf8("label"));
-
-        gridLayout_2->addWidget(label, 0, 0, 1, 1);
-
         gridLayout = new QGridLayout();
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         push6 = new QPushButton(pin_window);
@@ -102,14 +98,24 @@ public:
         gridLayout->addWidget(push0, 3, 1, 1, 1);
 
 
-        gridLayout_2->addLayout(gridLayout, 1, 0, 1, 1);
+        gridLayout_2->addLayout(gridLayout, 2, 0, 1, 1);
 
         buttonBox = new QDialogButtonBox(pin_window);
         buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
 
-        gridLayout_2->addWidget(buttonBox, 2, 0, 1, 1);
+        gridLayout_2->addWidget(buttonBox, 3, 0, 1, 1);
+
+        label = new QLabel(pin_window);
+        label->setObjectName(QString::fromUtf8("label"));
+
+        gridLayout_2->addWidget(label, 0, 0, 1, 1);
+
+        label_2 = new QLabel(pin_window);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+
+        gridLayout_2->addWidget(label_2, 1, 0, 1, 1);
 
 
         retranslateUi(pin_window);
@@ -122,7 +128,6 @@ public:
     void retranslateUi(QDialog *pin_window)
     {
         pin_window->setWindowTitle(QCoreApplication::translate("pin_window", "Dialog", nullptr));
-        label->setText(QCoreApplication::translate("pin_window", "Anna PIN-koodi", nullptr));
         push6->setText(QCoreApplication::translate("pin_window", "6", nullptr));
         push5->setText(QCoreApplication::translate("pin_window", "5", nullptr));
         push8->setText(QCoreApplication::translate("pin_window", "8", nullptr));
@@ -133,6 +138,8 @@ public:
         push1->setText(QCoreApplication::translate("pin_window", "1", nullptr));
         push3->setText(QCoreApplication::translate("pin_window", "3", nullptr));
         push0->setText(QCoreApplication::translate("pin_window", "0", nullptr));
+        label->setText(QCoreApplication::translate("pin_window", "Anna PIN-koodi", nullptr));
+        label_2->setText(QString());
     } // retranslateUi
 
 };
