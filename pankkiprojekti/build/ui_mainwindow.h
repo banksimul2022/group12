@@ -11,10 +11,12 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -23,7 +25,10 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QLineEdit *lineEdit;
+    QWidget *verticalLayoutWidget_2;
+    QVBoxLayout *verticalLayout;
+    QLabel *label;
+    QPushButton *pushButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -34,9 +39,26 @@ public:
         MainWindow->resize(800, 600);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        lineEdit = new QLineEdit(centralwidget);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        lineEdit->setGeometry(QRect(120, 70, 113, 21));
+        centralwidget->setMaximumSize(QSize(800, 557));
+        verticalLayoutWidget_2 = new QWidget(centralwidget);
+        verticalLayoutWidget_2->setObjectName(QString::fromUtf8("verticalLayoutWidget_2"));
+        verticalLayoutWidget_2->setGeometry(QRect(9, 9, 371, 221));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget_2);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        label = new QLabel(verticalLayoutWidget_2);
+        label->setObjectName(QString::fromUtf8("label"));
+        QFont font;
+        font.setPointSize(12);
+        label->setFont(font);
+
+        verticalLayout->addWidget(label);
+
+        pushButton = new QPushButton(verticalLayoutWidget_2);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+
+        verticalLayout->addWidget(pushButton);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -54,7 +76,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        lineEdit->setText(QCoreApplication::translate("MainWindow", "Aseta kortti lukijaan", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Aseta kortti lukijaan", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "Go to pin window (DEBUG)", nullptr));
     } // retranslateUi
 
 };
