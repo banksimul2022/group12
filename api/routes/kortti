@@ -26,7 +26,7 @@ router.get('/:id?',
 
 router.post('/', 
 function(request, response) {
-  book.add(request.body, function(err, dbResult) {
+  book.add(request.body, function(err, count) {
     if (err) {
       response.json(err);
     } else {
@@ -38,7 +38,7 @@ function(request, response) {
 
 router.delete('/:id', 
 function(request, response) {
-  book.delete(request.params.id, function(err, dbResult) {
+  book.delete(request.params.id, function(err, count) {
     if (err) {
       response.json(err);
     } else {
