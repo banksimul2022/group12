@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    //ui->label->setText(ui->label->text()+" hep");
 }
 
 MainWindow::~MainWindow()
@@ -19,6 +20,6 @@ void MainWindow::on_pushButton_clicked()
 {
     pin_window *pw = new pin_window();
     pw->show();
-    this->hide();
+    this->close();
 }
 
