@@ -27,8 +27,8 @@ public:
     QWidget *centralwidget;
     QWidget *verticalLayoutWidget_2;
     QVBoxLayout *verticalLayout;
-    QLabel *label;
     QPushButton *pushButton;
+    QLabel *label;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -42,23 +42,21 @@ public:
         centralwidget->setMaximumSize(QSize(800, 557));
         verticalLayoutWidget_2 = new QWidget(centralwidget);
         verticalLayoutWidget_2->setObjectName(QString::fromUtf8("verticalLayoutWidget_2"));
-        verticalLayoutWidget_2->setGeometry(QRect(9, 9, 371, 221));
+        verticalLayoutWidget_2->setGeometry(QRect(9, 149, 501, 81));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget_2);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(verticalLayoutWidget_2);
-        label->setObjectName(QString::fromUtf8("label"));
-        QFont font;
-        font.setPointSize(12);
-        label->setFont(font);
-
-        verticalLayout->addWidget(label);
-
         pushButton = new QPushButton(verticalLayoutWidget_2);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
 
         verticalLayout->addWidget(pushButton);
 
+        label = new QLabel(centralwidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(60, 0, 431, 131));
+        QFont font;
+        font.setPointSize(12);
+        label->setFont(font);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -76,8 +74,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "Aseta kortti lukijaan", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "Go to pin window (DEBUG)", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Aseta kortti lukijaan", nullptr));
     } // retranslateUi
 
 };

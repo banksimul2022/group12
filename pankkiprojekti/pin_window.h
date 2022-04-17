@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <QDialog>
+#include <QTimer>
 
 namespace Ui {
 class pin_window;
@@ -15,6 +16,8 @@ class pin_window : public QDialog
 public:
     explicit pin_window(QWidget *parent = nullptr);
     ~pin_window();
+public slots:
+    void go_to_main_window();
 
 private slots:
     void on_push1_clicked();
@@ -22,8 +25,6 @@ private slots:
     void on_push2_clicked();
 
     void on_push3_clicked();
-
-    void on_buttonBox_accepted();
 
     void on_push4_clicked();
 
@@ -42,9 +43,18 @@ private slots:
     void refresh_pin_label();
 
     void update_pin(int);
+
+    void check_pin();
+
+    void on_push_cancel_clicked();
+
+    void on_push_ok_clicked();
+
 private:
     Ui::pin_window *ui;
     std::vector< int > pinArray;
+    QTimer *timer;
+    int failedPinAttempts;
 };
 
 #endif // PIN_WINDOW_H
