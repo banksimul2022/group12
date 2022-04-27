@@ -151,7 +151,7 @@ void pin_window::refresh_pin_label() {
 void pin_window::check_pin() {
 
     // TO DO: pin-koodin tarkistaminen tähän!
-    bool succeeded = false; //this->restClient.validatePIN();
+    bool succeeded = true; //this->restClient.validatePIN();
 
     if (!succeeded) {
         qDebug() << this->failedPinAttempts;
