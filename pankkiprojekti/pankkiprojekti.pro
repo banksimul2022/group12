@@ -12,17 +12,20 @@ SOURCES += \
     account_view.cpp \
     main.cpp \
     mainwindow.cpp \
-    pin_window.cpp
+    pin_window.cpp \
+    transactions_window.cpp
 
 HEADERS += \
     account_view.h \
     mainwindow.h \
-    pin_window.h
+    pin_window.h \
+    transactions_window.h
 
 FORMS += \
     account_view.ui \
     mainwindow.ui \
-    pin_window.ui
+    pin_window.ui \
+    transactions_window.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
