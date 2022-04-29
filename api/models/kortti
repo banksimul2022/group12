@@ -1,29 +1,28 @@
-
 const db = require('../database');
+const bcrypt = require('bcryptjs');
+const saltRounds = 10;
 
 const kortti = {
   getById: function(id, callback) {
-    return db.query('select * from kortti where kortti_idkortti=?', [id], callback);
+    return db.query('select * from kortti where idkortti=?', [id], callback);
   },
   getAll: function(callback) {
     return db.query('select * from kortti', callback);
   },
   add: function(kortti, callback) {
-    return db.query(
-      'insert into kortti (kortinnimi,PIN,Asiakas_idAsiakas,Tili_idTili) values(?,?)',
-      [kortti.kortinnimi, kortti.pin, kortti.asiakas_idasiakas, kortti.tili_idtili],
-      callback
-    );
+    bcrypt.hash(kortti.PIN, saltRounds, function(err,hash) {
+     return db.query('insert into kortti (kortinnumero,PIN,Asiakas_idAsiakas,Tili_idTili,lukittu) values(?,?,?,?,?)',
+      [kortti.kortinnumero, kortti.asiakas_idasiakas, kortti.tili_idtili, hash, kortti.lukittu],callback);
+    });
   },
   delete: function(id, callback) {
-    return db.query('delete from kortti where kortti_idkortti=?', [id], callback);
+    return db.query('delete from kortti where idkortti=?', [id], callback);
   },
   update: function(idkortti, kortti, callback) {
-    return db.query(
-      'update kortti set kortinnimi=?,pin=?,asiakas_idasiakas=?,tili_idtili=? where idasiakas=?',
-      [kortti.kortinnimi, kortti.pin, kortti.asiakas_idasiakas, kortti.tili_idtili,idasiakas],
-      callback
-    );
+    bcrypt.hash(kortti.PIN,saltRounds,function(err, hash){
+     return db.query('update kortti set kortinnumero=?,pin=?, lukittu=? where idkortti=?',
+      [kortti.kortinnumero, kortti.idkortti, hash, kortti.lukittu],callback);
+    });
   }
 };
 module.exports = kortti;
