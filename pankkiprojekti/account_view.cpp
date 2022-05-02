@@ -2,6 +2,8 @@
 #include "ui_account_view.h"
 #include "mainwindow.h"
 #include <QDebug>
+#include "drawmoney.h"
+#include "transactions_window.h"
 
 
 #define ACC_TIMEOUT 30000
@@ -19,6 +21,9 @@ account_view::account_view(QWidget *parent) :
     connect(timer, SIGNAL(timeout()), this, SLOT(go_to_main_window()));
     timer->start(ACC_TIMEOUT);
     this->timer = timer;
+
+    /* connect(objRestApi, SIGNAL(nimiExe(QString)),
+            this, SLOT(receiveClientName(QString)));*/
 
 }
 
@@ -39,6 +44,22 @@ void account_view::on_push_logout_clicked()
 {
     MainWindow *mw = new MainWindow();
     mw->show();
+    this->hide();
+}
+
+
+void account_view::on_push_transactions_clicked()
+{
+    transactions_window *tw = new transactions_window();
+    tw->show();
+    this->hide();
+}
+
+
+void account_view::on_push_withdraw_clicked()
+{
+    Drawmoney *dm = new Drawmoney();
+    dm->show();
     this->hide();
 }
 
