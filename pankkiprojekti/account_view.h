@@ -3,6 +3,9 @@
 
 #include <QDialog>
 #include <QTimer>
+//#include "restapi1.h"
+#include "drawmoney.h"
+#include <QDebug>
 
 namespace Ui {
 class account_view;
@@ -17,11 +20,15 @@ public:
     ~account_view();
 
 private slots:
-    void on_pushButton_clicked();
-
+    
     void on_push_info_clicked();
 
     void on_push_logout_clicked();
+    
+    void on_push_transactions_clicked();
+
+    void on_push_withdraw_clicked();
+    
 
 private:
     Ui::account_view *ui;
