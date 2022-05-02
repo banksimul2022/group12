@@ -3,6 +3,7 @@
 #include "mainwindow.h"
 #include <vector>
 #include <QDebug>
+#include "account_view.h"
 
 
 // määritellään montako lukua käsitellään
@@ -172,4 +173,7 @@ void pin_window::check_pin() {
         return;
     }
     ui->label->setText(ui->label->text()+"\nPIN-koodi oikein!");
+    account_view *av = new account_view();
+    av->show();
+    this->close();
 }
