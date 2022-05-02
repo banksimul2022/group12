@@ -2,6 +2,7 @@
 #include "ui_transactions_window.h"
 #include "mainwindow.h"
 #include <QDebug>
+#include "account_view.h"
 
 #define ACC_TIMEOUT 30000
 
@@ -24,8 +25,8 @@ transactions_window::~transactions_window()
 
 void transactions_window::on_push_back_clicked()
 {
-    MainWindow *mw = new MainWindow();
-    mw->show();
-    this->hide();
+    account_view *av = new account_view();
+    av->show();
+    this->close();
 }
 
