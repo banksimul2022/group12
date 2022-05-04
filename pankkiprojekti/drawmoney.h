@@ -4,7 +4,8 @@
 #include <QDialog>
 #include <QDebug>
 #include <QTimer>
-//#include "restapi1.h"
+#include "ui_drawmoney.h"
+#include "restapi1.h"
 
 
 namespace Ui {
@@ -36,15 +37,30 @@ private slots:
 
     void on_Draw500_clicked();
 
+signals:
+    void updateSaldo();
+    void mainTimerSignal();
+
+public slots:
+    void recvIdAsiakasInDrawMoney(QString);
+    void recvWithdrawalReady();
+    void recvSaldo(QString);
+    void recvName(QString);
+    void recvIdTiliInDrawMoney(QString);
+    void startDrawMoneyTimer();
+    void drawMoneyIdleSlot();
+    void clearWarning();
+    void recvCardMode(bool);
+
 private:
     Ui::Drawmoney *ui;
+    RestApi1 *objRestApi;
     QString drawAmount;
-  //  RestApi1 *objRestApi;
-    QString clientID;
-    QString clientName;
-    QString accountID;
     QString saldo;
     bool credit = false;
+    QString idAsiakas;
+    QString nimi;
+    QString idTili;
     QTimer *timer;
     QTimer *timerWarning;
 };

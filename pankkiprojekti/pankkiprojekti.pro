@@ -34,3 +34,10 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/RestApi1/build/release/ -lRestApi1
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/RestApi1/build/debug/ -lRestApi1
+
+INCLUDEPATH += $$PWD/RestApi1
+DEPENDPATH += $$PWD/RestApi1

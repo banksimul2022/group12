@@ -1,17 +1,50 @@
 #include "drawmoney.h"
 #include "ui_drawmoney.h"
+#include <QDebug>
+#include <QDialog>
+
 
 Drawmoney::Drawmoney(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Drawmoney)
 {
     ui->setupUi(this);
-    //objRestApi = new RestApi1;
+
+    objRestApi = new RestApi1;
     timer = new QTimer;
     timerWarning = new QTimer;
 
-    /* connect(objRestApi,SIGNAL(saldoSignal(QString)),
-             this,SLOT(receiveSaldo(QString)));*/
+
+    connect(objRestApi, SIGNAL(nostoReady()),
+            this, SLOT(recvWithdrawalReady()));
+
+    connect(objRestApi, SIGNAL(saldoSignal(QString)),
+            this, SLOT(recvSaldo(QString)));
+
+    connect(ui->Draw, SIGNAL(clicked()),
+            this, SLOT(startDrawMoneyTimer()));
+
+    connect(ui->Draw20, SIGNAL(clicked()),
+            this, SLOT(startDrawMoneyTimer()));
+
+    connect(ui->Draw40, SIGNAL(clicked()),
+            this, SLOT(startDrawMoneyTimer()));
+
+    connect(ui->Draw60, SIGNAL(clicked()),
+            this, SLOT(startDrawMoneyTimer()));
+
+    connect(ui->Draw100, SIGNAL(clicked()),
+            this, SLOT(startDrawMoneyTimer()));
+
+    connect(ui->Draw200, SIGNAL(clicked()),
+            this, SLOT(startDrawMoneyTimer()));
+
+    connect(ui->Draw500, SIGNAL(clicked()),
+            this, SLOT(startDrawMoneyTimer()));
+
+    connect(timer, SIGNAL(timeout()),
+            this, SLOT(drawMoneyIdleSlot()));
+
 
 }
 
@@ -19,20 +52,19 @@ Drawmoney::~Drawmoney()
 {
     delete ui;
 
-    //delete objRestApi;
-   // objRestApi =nullptr;
+    delete objRestApi;
+    objRestApi = nullptr;
 
     delete timer;
-    timer=nullptr;
+    timer = nullptr;
 
     delete timerWarning;
-    timerWarning=nullptr;
+    timerWarning = nullptr;
 }
 
 void Drawmoney::on_Draw_clicked()
 {
-    //objRestApi->saldo(clientID);
-    qDebug()<<"nosta (acc_ID, client_ID, summa)"<< accountID <<":"<<clientID<<":"<<drawAmount;
+    qDebug()<<"nosta: "<< idTili <<":"<<idAsiakas<<":"<<drawAmount;
     double num1 = drawAmount.toDouble();
     double num2 = saldo.toDouble();
 
@@ -42,7 +74,6 @@ void Drawmoney::on_Draw_clicked()
         if(credit==true)
         {
             qDebug()<<"credit nosto"<<num1<<">"<<num2;
-            //objRestApi->nosto(accountID, clientID, drawAmount);
             this->close();
         }
         else {
@@ -50,9 +81,53 @@ void Drawmoney::on_Draw_clicked()
         }
     }
     else {
-       // objRestApi->nosto(accountID, clientID, drawAmount);
         ui->label->setText("");
 
+    }
+}
+void Drawmoney::recvIdAsiakasInDrawMoney(QString id)
+{
+    idAsiakas = id;
+    qDebug()<< "receiveClientIDinDrawMoney"<< idAsiakas;
+    objRestApi->saldo(idAsiakas);
+    ui->label->setText(saldo);
+}
+void Drawmoney::recvWithdrawalReady()
+{
+    qDebug()<< "receiveWithdrawalReady in EXE";
+    objRestApi->saldo(idAsiakas);
+    emit updateSaldo();
+}
+void Drawmoney::recvSaldo(QString bal)
+{
+    saldo = bal;
+    qDebug()<< "receiveBalance in drawmoney"<<nimi <<" " << saldo;
+}
+
+void Drawmoney::recvIdTiliInDrawMoney(QString id)
+{
+    idTili = id;
+    qDebug()<< "receiveAccountIDinDrawMoney id:" <<idTili;
+}
+void Drawmoney::startDrawMoneyTimer()
+{
+    qDebug()<< "startDrawMoneyTimer()";
+    timer->start(10000);
+}
+
+void Drawmoney::drawMoneyIdleSlot()
+{
+    qDebug()<< "drawMoneyIdleSlot()";
+
+    if(this->isActiveWindow() == false)
+    {
+        qDebug()<< "drawMoneyIdleSlot() isActiveWindow() == false) restarting timer 10sec";
+        timer->start(10000);
+    }
+    else {
+        qDebug()<< "drawMoneyIdleSlot() close";
+        emit mainTimerSignal();
+        this->close();
     }
 }
 #include "account_view.h"
@@ -98,5 +173,23 @@ void Drawmoney::on_Draw200_clicked()
 void Drawmoney::on_Draw500_clicked()
 {
     drawAmount = "500";
+}
+
+void Drawmoney::clearWarning()
+{
+    ui->label->setText("");
+}
+
+void Drawmoney::recvCardMode(bool mode)
+{
+    credit = mode;
+    qDebug()<< "recvCardMode in drawmoney"<< mode;
+    if(credit == true)
+    {
+        ui->label->setText("     CREDIT");
+    }
+    else{
+        ui->label->setText("     DEBIT");
+    }
 }
 
