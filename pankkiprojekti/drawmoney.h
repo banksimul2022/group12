@@ -45,7 +45,6 @@ public slots:
     void recvIdAsiakasInDrawMoney(QString);
     void recvWithdrawalReady();
     void recvSaldo(QString);
-    void recvName(QString);
     void recvIdTiliInDrawMoney(QString);
     void startDrawMoneyTimer();
     void drawMoneyIdleSlot();
