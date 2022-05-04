@@ -16,10 +16,10 @@ CXX           = g++
 DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DMINGW_HAS_SECURE_API=1 -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_NEEDS_QMAIN
 CFLAGS        = -fno-keep-inline-dllexport -g -Wall -Wextra -Wextra $(DEFINES)
 CXXFLAGS      = -fno-keep-inline-dllexport -g -std=gnu++11 -Wall -Wextra -Wextra -fexceptions -mthreads $(DEFINES)
-INCPATH       = -I. -IC:\Qt\5.15.2\mingw81_32\include -IC:\Qt\5.15.2\mingw81_32\include\QtWidgets -IC:\Qt\5.15.2\mingw81_32\include\QtGui -IC:\Qt\5.15.2\mingw81_32\include\QtANGLE -IC:\Qt\5.15.2\mingw81_32\include\QtNetwork -IC:\Qt\5.15.2\mingw81_32\include\QtCore -Idebug -I. -IC:\Qt\5.15.2\mingw81_32\mkspecs\win32-g++ 
+INCPATH       = -I. -Irestapidll -IC:\Qt\5.15.2\mingw81_32\include -IC:\Qt\5.15.2\mingw81_32\include\QtWidgets -IC:\Qt\5.15.2\mingw81_32\include\QtGui -IC:\Qt\5.15.2\mingw81_32\include\QtANGLE -IC:\Qt\5.15.2\mingw81_32\include\QtNetwork -IC:\Qt\5.15.2\mingw81_32\include\QtCore -Idebug -I. -IC:\Qt\5.15.2\mingw81_32\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-subsystem,windows -mthreads
-LIBS        =        C:\Qt\5.15.2\mingw81_32\lib\libQt5Widgets.a C:\Qt\5.15.2\mingw81_32\lib\libQt5Gui.a C:\Qt\5.15.2\mingw81_32\lib\libQt5Network.a C:\Qt\5.15.2\mingw81_32\lib\libQt5Core.a  -lmingw32 C:\Qt\5.15.2\mingw81_32\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\mysql-5.7.25-win32\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 
+LIBS        =        -LC:\Users\janne\PROJEKTI\group12\pankkiprojekti\restapidll\build\debug -lrestapidll C:\Qt\5.15.2\mingw81_32\lib\libQt5Widgets.a C:\Qt\5.15.2\mingw81_32\lib\libQt5Gui.a C:\Qt\5.15.2\mingw81_32\lib\libQt5Network.a C:\Qt\5.15.2\mingw81_32\lib\libQt5Core.a  -lmingw32 C:\Qt\5.15.2\mingw81_32\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\mysql-5.7.25-win32\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 
 QMAKE         = C:\Qt\5.15.2\mingw81_32\bin\qmake.exe
 DEL_FILE      = del
 CHK_DIR_EXISTS= if not exist
@@ -240,9 +240,11 @@ debug/moc_account_view.cpp: account_view.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtCore/QTimer \
 		C:/Qt/5.15.2/mingw81_32/include/QtCore/qtimer.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtCore/qbasictimer.h \
+		drawmoney.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtCore/QDebug \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.2/mingw81_32/bin/moc.exe
-	C:\Qt\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include C:/Users/janne/PROJEKTI/group12/pankkiprojekti/debug/moc_predefs.h -IC:/Qt/5.15.2/mingw81_32/mkspecs/win32-g++ -IC:/Users/janne/PROJEKTI/group12/pankkiprojekti -IC:/Qt/5.15.2/mingw81_32/include -IC:/Qt/5.15.2/mingw81_32/include/QtWidgets -IC:/Qt/5.15.2/mingw81_32/include/QtGui -IC:/Qt/5.15.2/mingw81_32/include/QtANGLE -IC:/Qt/5.15.2/mingw81_32/include/QtNetwork -IC:/Qt/5.15.2/mingw81_32/include/QtCore -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_32/i686-w64-mingw32/include account_view.h -o debug\moc_account_view.cpp
+	C:\Qt\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include C:/Users/janne/PROJEKTI/group12/pankkiprojekti/debug/moc_predefs.h -IC:/Qt/5.15.2/mingw81_32/mkspecs/win32-g++ -IC:/Users/janne/PROJEKTI/group12/pankkiprojekti -IC:/Users/janne/PROJEKTI/group12/pankkiprojekti/restapidll -IC:/Qt/5.15.2/mingw81_32/include -IC:/Qt/5.15.2/mingw81_32/include/QtWidgets -IC:/Qt/5.15.2/mingw81_32/include/QtGui -IC:/Qt/5.15.2/mingw81_32/include/QtANGLE -IC:/Qt/5.15.2/mingw81_32/include/QtNetwork -IC:/Qt/5.15.2/mingw81_32/include/QtCore -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_32/i686-w64-mingw32/include account_view.h -o debug\moc_account_view.cpp
 
 debug/moc_drawmoney.cpp: drawmoney.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QDialog \
@@ -355,7 +357,7 @@ debug/moc_drawmoney.cpp: drawmoney.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtCore/qbasictimer.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.2/mingw81_32/bin/moc.exe
-	C:\Qt\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include C:/Users/janne/PROJEKTI/group12/pankkiprojekti/debug/moc_predefs.h -IC:/Qt/5.15.2/mingw81_32/mkspecs/win32-g++ -IC:/Users/janne/PROJEKTI/group12/pankkiprojekti -IC:/Qt/5.15.2/mingw81_32/include -IC:/Qt/5.15.2/mingw81_32/include/QtWidgets -IC:/Qt/5.15.2/mingw81_32/include/QtGui -IC:/Qt/5.15.2/mingw81_32/include/QtANGLE -IC:/Qt/5.15.2/mingw81_32/include/QtNetwork -IC:/Qt/5.15.2/mingw81_32/include/QtCore -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_32/i686-w64-mingw32/include drawmoney.h -o debug\moc_drawmoney.cpp
+	C:\Qt\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include C:/Users/janne/PROJEKTI/group12/pankkiprojekti/debug/moc_predefs.h -IC:/Qt/5.15.2/mingw81_32/mkspecs/win32-g++ -IC:/Users/janne/PROJEKTI/group12/pankkiprojekti -IC:/Users/janne/PROJEKTI/group12/pankkiprojekti/restapidll -IC:/Qt/5.15.2/mingw81_32/include -IC:/Qt/5.15.2/mingw81_32/include/QtWidgets -IC:/Qt/5.15.2/mingw81_32/include/QtGui -IC:/Qt/5.15.2/mingw81_32/include/QtANGLE -IC:/Qt/5.15.2/mingw81_32/include/QtNetwork -IC:/Qt/5.15.2/mingw81_32/include/QtCore -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_32/i686-w64-mingw32/include drawmoney.h -o debug\moc_drawmoney.cpp
 
 debug/moc_mainwindow.cpp: mainwindow.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
@@ -466,7 +468,7 @@ debug/moc_mainwindow.cpp: mainwindow.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtGui/qicon.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.2/mingw81_32/bin/moc.exe
-	C:\Qt\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include C:/Users/janne/PROJEKTI/group12/pankkiprojekti/debug/moc_predefs.h -IC:/Qt/5.15.2/mingw81_32/mkspecs/win32-g++ -IC:/Users/janne/PROJEKTI/group12/pankkiprojekti -IC:/Qt/5.15.2/mingw81_32/include -IC:/Qt/5.15.2/mingw81_32/include/QtWidgets -IC:/Qt/5.15.2/mingw81_32/include/QtGui -IC:/Qt/5.15.2/mingw81_32/include/QtANGLE -IC:/Qt/5.15.2/mingw81_32/include/QtNetwork -IC:/Qt/5.15.2/mingw81_32/include/QtCore -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_32/i686-w64-mingw32/include mainwindow.h -o debug\moc_mainwindow.cpp
+	C:\Qt\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include C:/Users/janne/PROJEKTI/group12/pankkiprojekti/debug/moc_predefs.h -IC:/Qt/5.15.2/mingw81_32/mkspecs/win32-g++ -IC:/Users/janne/PROJEKTI/group12/pankkiprojekti -IC:/Users/janne/PROJEKTI/group12/pankkiprojekti/restapidll -IC:/Qt/5.15.2/mingw81_32/include -IC:/Qt/5.15.2/mingw81_32/include/QtWidgets -IC:/Qt/5.15.2/mingw81_32/include/QtGui -IC:/Qt/5.15.2/mingw81_32/include/QtANGLE -IC:/Qt/5.15.2/mingw81_32/include/QtNetwork -IC:/Qt/5.15.2/mingw81_32/include/QtCore -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_32/i686-w64-mingw32/include mainwindow.h -o debug\moc_mainwindow.cpp
 
 debug/moc_pin_window.cpp: pin_window.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QDialog \
@@ -578,7 +580,7 @@ debug/moc_pin_window.cpp: pin_window.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtCore/qbasictimer.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.2/mingw81_32/bin/moc.exe
-	C:\Qt\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include C:/Users/janne/PROJEKTI/group12/pankkiprojekti/debug/moc_predefs.h -IC:/Qt/5.15.2/mingw81_32/mkspecs/win32-g++ -IC:/Users/janne/PROJEKTI/group12/pankkiprojekti -IC:/Qt/5.15.2/mingw81_32/include -IC:/Qt/5.15.2/mingw81_32/include/QtWidgets -IC:/Qt/5.15.2/mingw81_32/include/QtGui -IC:/Qt/5.15.2/mingw81_32/include/QtANGLE -IC:/Qt/5.15.2/mingw81_32/include/QtNetwork -IC:/Qt/5.15.2/mingw81_32/include/QtCore -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_32/i686-w64-mingw32/include pin_window.h -o debug\moc_pin_window.cpp
+	C:\Qt\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include C:/Users/janne/PROJEKTI/group12/pankkiprojekti/debug/moc_predefs.h -IC:/Qt/5.15.2/mingw81_32/mkspecs/win32-g++ -IC:/Users/janne/PROJEKTI/group12/pankkiprojekti -IC:/Users/janne/PROJEKTI/group12/pankkiprojekti/restapidll -IC:/Qt/5.15.2/mingw81_32/include -IC:/Qt/5.15.2/mingw81_32/include/QtWidgets -IC:/Qt/5.15.2/mingw81_32/include/QtGui -IC:/Qt/5.15.2/mingw81_32/include/QtANGLE -IC:/Qt/5.15.2/mingw81_32/include/QtNetwork -IC:/Qt/5.15.2/mingw81_32/include/QtCore -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_32/i686-w64-mingw32/include pin_window.h -o debug\moc_pin_window.cpp
 
 debug/moc_transactions_window.cpp: transactions_window.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QDialog \
@@ -690,7 +692,7 @@ debug/moc_transactions_window.cpp: transactions_window.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtCore/qbasictimer.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.2/mingw81_32/bin/moc.exe
-	C:\Qt\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include C:/Users/janne/PROJEKTI/group12/pankkiprojekti/debug/moc_predefs.h -IC:/Qt/5.15.2/mingw81_32/mkspecs/win32-g++ -IC:/Users/janne/PROJEKTI/group12/pankkiprojekti -IC:/Qt/5.15.2/mingw81_32/include -IC:/Qt/5.15.2/mingw81_32/include/QtWidgets -IC:/Qt/5.15.2/mingw81_32/include/QtGui -IC:/Qt/5.15.2/mingw81_32/include/QtANGLE -IC:/Qt/5.15.2/mingw81_32/include/QtNetwork -IC:/Qt/5.15.2/mingw81_32/include/QtCore -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_32/i686-w64-mingw32/include transactions_window.h -o debug\moc_transactions_window.cpp
+	C:\Qt\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include C:/Users/janne/PROJEKTI/group12/pankkiprojekti/debug/moc_predefs.h -IC:/Qt/5.15.2/mingw81_32/mkspecs/win32-g++ -IC:/Users/janne/PROJEKTI/group12/pankkiprojekti -IC:/Users/janne/PROJEKTI/group12/pankkiprojekti/restapidll -IC:/Qt/5.15.2/mingw81_32/include -IC:/Qt/5.15.2/mingw81_32/include/QtWidgets -IC:/Qt/5.15.2/mingw81_32/include/QtGui -IC:/Qt/5.15.2/mingw81_32/include/QtANGLE -IC:/Qt/5.15.2/mingw81_32/include/QtNetwork -IC:/Qt/5.15.2/mingw81_32/include/QtCore -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_32/i686-w64-mingw32/include transactions_window.h -o debug\moc_transactions_window.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -839,13 +841,36 @@ debug/account_view.o: account_view.cpp account_view.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtCore/QTimer \
 		C:/Qt/5.15.2/mingw81_32/include/QtCore/qtimer.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtCore/qbasictimer.h \
+		drawmoney.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtCore/QDebug \
 		ui_account_view.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtCore/QVariant \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QApplication \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QHBoxLayout \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QLabel \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QPushButton \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qpushbutton.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtGui/qicon.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QWidget \
 		mainwindow.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
 		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qtabwidget.h \
-		C:/Qt/5.15.2/mingw81_32/include/QtGui/qicon.h \
-		C:/Qt/5.15.2/mingw81_32/include/QtCore/QDebug
+		transactions_window.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\account_view.o account_view.cpp
 
 debug/drawmoney.o: drawmoney.cpp drawmoney.h \
@@ -957,7 +982,31 @@ debug/drawmoney.o: drawmoney.cpp drawmoney.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtCore/QTimer \
 		C:/Qt/5.15.2/mingw81_32/include/QtCore/qtimer.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtCore/qbasictimer.h \
-		ui_drawmoney.h
+		ui_drawmoney.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtCore/QVariant \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QApplication \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QFormLayout \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qformlayout.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QLayout \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QLabel \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QPushButton \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qpushbutton.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtGui/qicon.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QWidget \
+		account_view.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\drawmoney.o drawmoney.cpp
 
 debug/main.o: main.cpp mainwindow.h \
@@ -1184,6 +1233,33 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtGui/qicon.h \
 		ui_mainwindow.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtCore/QVariant \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QApplication \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QLabel \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QMenuBar \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qmenubar.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qmenu.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qaction.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qactiongroup.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QPushButton \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qpushbutton.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QStatusBar \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qstatusbar.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QWidget \
 		pin_window.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QDialog \
 		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qdialog.h \
@@ -1301,12 +1377,34 @@ debug/pin_window.o: pin_window.cpp pin_window.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtCore/qtimer.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtCore/qbasictimer.h \
 		ui_pin_window.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtCore/QVariant \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QApplication \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QGridLayout \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QHBoxLayout \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QLabel \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QPushButton \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qpushbutton.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtGui/qicon.h \
 		mainwindow.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
 		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qtabwidget.h \
-		C:/Qt/5.15.2/mingw81_32/include/QtGui/qicon.h \
-		C:/Qt/5.15.2/mingw81_32/include/QtCore/QDebug
+		C:/Qt/5.15.2/mingw81_32/include/QtCore/QDebug \
+		account_view.h \
+		drawmoney.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\pin_window.o pin_window.cpp
 
 debug/transactions_window.o: transactions_window.cpp transactions_window.h \
@@ -1418,12 +1516,52 @@ debug/transactions_window.o: transactions_window.cpp transactions_window.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtCore/qtimer.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtCore/qbasictimer.h \
 		ui_transactions_window.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtCore/QVariant \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QApplication \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QHBoxLayout \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qlayout.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QLabel \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QListView \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qlistview.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtGui/qicon.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qtabwidget.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QPushButton \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qpushbutton.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QSpacerItem \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QVBoxLayout \
+		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QWidget \
 		mainwindow.h \
 		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
 		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qmainwindow.h \
-		C:/Qt/5.15.2/mingw81_32/include/QtWidgets/qtabwidget.h \
-		C:/Qt/5.15.2/mingw81_32/include/QtGui/qicon.h \
-		C:/Qt/5.15.2/mingw81_32/include/QtCore/QDebug
+		C:/Qt/5.15.2/mingw81_32/include/QtCore/QDebug \
+		account_view.h \
+		drawmoney.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\transactions_window.o transactions_window.cpp
 
 debug/moc_account_view.o: debug/moc_account_view.cpp 

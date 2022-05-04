@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include <QTimer>
-//#include "restapi1.h"
+#include "restapidll.h"
 #include "drawmoney.h"
 #include <QDebug>
 
@@ -33,6 +33,10 @@ private slots:
 private:
     Ui::account_view *ui;
     QTimer *timer;
+    QString nimi;
+    Restapidll *objRestApi;
+public slots:
+    void recvName(QString);
 };
 
 #endif // ACCOUNT_VIEW_H
