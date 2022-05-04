@@ -192,4 +192,3 @@ void Drawmoney::recvCardMode(bool mode)
         ui->label->setText("     DEBIT");
     }
 }
-

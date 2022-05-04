@@ -7,7 +7,6 @@
 #include "drawmoney.h"
 #include <QDebug>
 
-
 namespace Ui {
 class account_view;
 }
@@ -25,6 +24,11 @@ private slots:
     void on_push_info_clicked();
 
     void on_push_logout_clicked();
+    
+    void on_push_transactions_clicked();
+
+    void on_push_withdraw_clicked();
+    
 
     void on_push_transactions_clicked();
 
