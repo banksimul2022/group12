@@ -32,9 +32,9 @@ private slots:
     void on_push_withdraw_clicked();
     
 
-    void on_push_transactions_clicked();
+   // void on_push_transactions_clicked();
 
-    void on_push_withdraw_clicked();
+    //void on_push_withdraw_clicked();
 
 private:
     Ui::account_view *ui;

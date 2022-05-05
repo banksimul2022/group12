@@ -13,21 +13,18 @@ SOURCES += \
     drawmoney.cpp \
     main.cpp \
     mainwindow.cpp \
-    pin_window.cpp \
     transactions_window.cpp
 
 HEADERS += \
     account_view.h \
     drawmoney.h \
     mainwindow.h \
-    pin_window.h \
     transactions_window.h
 
 FORMS += \
     account_view.ui \
     drawmoney.ui \
     mainwindow.ui \
-    pin_window.ui \
     transactions_window.ui
 
 # Default rules for deployment.
@@ -38,5 +35,13 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/restapidll/build/release/ -lrestapidll
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/restapidll/build/debug/ -lrestapidll
 
+
+win32: LIBS += -L$$PWD/restapidll/build/debug/ -lrestapidll
+
 INCLUDEPATH += $$PWD/restapidll
 DEPENDPATH += $$PWD/restapidll
+
+win32: LIBS += -L$$PWD/dll_pinui/pinui/build/debug/ -lpinui
+
+INCLUDEPATH += $$PWD/dll_pinui/pinui
+DEPENDPATH += $$PWD/dll_pinui/pinui

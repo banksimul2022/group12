@@ -26,12 +26,12 @@ MainWindow::~MainWindow()
     pPinui = nullptr;
 }
 
-// kun on_push_ok_clickediä painetaan pin ui DLL:ssä signaali lähetetään tähän metodiin
+// kun on_push_ok_clickediä painetaan pinui DLL:ssä, signaali lähetetään tähän metodiin
 void MainWindow::receivePinGivenSignal()
 {
     int pin = pPinui->getPin();
     qDebug() << "pin koodi: " << pin;
-    // Todo: lähetä rest apille pin
+    // Tähän tulee: lähetä rest apille pin
     bool success = false; //this->restClient->validatePin();
     this->showPinMessage(success);
 }
@@ -39,11 +39,14 @@ void MainWindow::receivePinGivenSignal()
 void MainWindow::showPinMessage(bool success)
 {
     if (success) {
+        // rajapintafunktio joka lähettää pinui:n settext funktioon tekstin
+        // joka näkyy labelissa
+        this->pPinui->setText("PIN-koodi oikein!");
         return;
     }
 
     this->failedPinAttempts++;
-    qDebug() << this->failedPinAttempts;
+    qDebug() << "failed attempt: " << this->failedPinAttempts;
     while (this->failedPinAttempts < 3)
     {
 
@@ -53,6 +56,8 @@ void MainWindow::showPinMessage(bool success)
 
     if (this->failedPinAttempts == 3)
     {
+        // kun pin väärin kolme kertaa: ilmoitus, ui disabled (pinUissa oleva timer
+        // palauttaa aloitusnäyttöön)
         this->pPinui->setText("PIN-koodi väärin kolme kertaa\nKortti lukittu!");
         this->failedPinAttempts = 0;
         this->pPinui->disableUI();
