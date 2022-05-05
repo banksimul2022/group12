@@ -30,3 +30,5 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../pinui/build/debug
 
 INCLUDEPATH += $$PWD/../../pinui/build/debug
 DEPENDPATH += $$PWD/../../pinui/build/debug
+
+

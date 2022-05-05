@@ -32,7 +32,7 @@ void MainWindow::receivePinGivenSignal()
     int pin = pPinui->getPin();
     qDebug() << "pin koodi: " << pin;
     // Tähän tulee: lähetä rest apille pin
-    bool success = true; //this->restClient->validatePin();
+    bool success = false; //this->restClient->validatePin();
     this->showPinMessage(success);
 }
 
