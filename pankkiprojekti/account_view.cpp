@@ -57,7 +57,6 @@ void account_view::on_push_logout_clicked()
     this->hide();
 }
 
-
 void account_view::on_push_transactions_clicked()
 {
     transactions_window *tw = new transactions_window();
