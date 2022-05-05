@@ -23,8 +23,7 @@ pinui::pinui(QWidget *parent) :
     this->timer = new QTimer(this);
     this->timer->start(PIN_TIMEOUT);
 
-
-    // lähetetään signaali exeen, kun nappia painetaan
+    // ???
     connect(this->timer, SIGNAL(timeout()), this, SLOT(close()));
     /*
      * connect(ui->push1,SIGNAL(clicked()),this,SLOT(on_push1_clicked()));
@@ -63,6 +62,7 @@ void pinui::setText(QString str)
 int pinui::getPin()
 {
     // int vektori integeriksi, esim: [1,4,5,6] => 1456
+    // ei hajua miten ja miksi tämä toimii
     auto v = this->pinArray;
     int total = 0;
     if (v.empty()) {
@@ -166,7 +166,8 @@ void pinui::on_push_cancel_clicked()
 void pinui::on_push_ok_clicked()
 {
     qDebug() << "Pressed OK!";
-    // jos pin arrayssä ei ole neljää lukua, ei lähetetä signaalia mainiin tai tyhjennetä labelia
+    // jos pin arrayssä ei ole neljää lukua, ei lähetetä signaalia mainiin
+    // tai tyhjennetä labelia
     if (this->pinArray.size() != MAX_SIZE) {
         return;
     }

@@ -16,14 +16,13 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_account_view
 {
 public:
-    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *horizontalLayout_2;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout;
     QLabel *label_accountview;
@@ -38,20 +37,18 @@ public:
         if (account_view->objectName().isEmpty())
             account_view->setObjectName(QString::fromUtf8("account_view"));
         account_view->resize(487, 431);
-        horizontalLayoutWidget = new QWidget(account_view);
-        horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(30, 30, 411, 331));
-        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout_2 = new QHBoxLayout(account_view);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        label_accountview = new QLabel(horizontalLayoutWidget);
+        label_accountview = new QLabel(account_view);
         label_accountview->setObjectName(QString::fromUtf8("label_accountview"));
 
         verticalLayout->addWidget(label_accountview);
 
-        push_info = new QPushButton(horizontalLayoutWidget);
+        push_info = new QPushButton(account_view);
         push_info->setObjectName(QString::fromUtf8("push_info"));
 
         verticalLayout->addWidget(push_info);
@@ -61,23 +58,26 @@ public:
 
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        push_withdraw = new QPushButton(horizontalLayoutWidget);
+        push_withdraw = new QPushButton(account_view);
         push_withdraw->setObjectName(QString::fromUtf8("push_withdraw"));
 
         verticalLayout_2->addWidget(push_withdraw);
 
-        push_transactions = new QPushButton(horizontalLayoutWidget);
+        push_transactions = new QPushButton(account_view);
         push_transactions->setObjectName(QString::fromUtf8("push_transactions"));
 
         verticalLayout_2->addWidget(push_transactions);
 
-        push_logout = new QPushButton(horizontalLayoutWidget);
+        push_logout = new QPushButton(account_view);
         push_logout->setObjectName(QString::fromUtf8("push_logout"));
 
         verticalLayout_2->addWidget(push_logout);
 
 
         horizontalLayout->addLayout(verticalLayout_2);
+
+
+        horizontalLayout_2->addLayout(horizontalLayout);
 
 
         retranslateUi(account_view);

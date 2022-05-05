@@ -2,8 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QDebug>
-#include <QTimer>
+#include "pinui.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -16,11 +15,16 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void showPinMessage(bool);
+public slots:
+    void receivePinGivenSignal();
 
 private slots:
     void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
+    pinui *pPinui;
+    int failedPinAttempts;
 };
 #endif // MAINWINDOW_H
