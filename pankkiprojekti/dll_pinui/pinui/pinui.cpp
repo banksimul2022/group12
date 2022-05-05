@@ -171,6 +171,8 @@ void pinui::on_push_ok_clicked()
     if (this->pinArray.size() != MAX_SIZE) {
         return;
     }
+    this->ui->label_2->setText("");
+    this->pinArray.clear();
     emit pinGivenSignal();
 }
 
