@@ -1,5 +1,5 @@
 QT       += core gui
-
+QT += network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     account_view.cpp \
+    drawmoney.cpp \
     main.cpp \
     mainwindow.cpp \
     pin_window.cpp \
@@ -17,12 +18,14 @@ SOURCES += \
 
 HEADERS += \
     account_view.h \
+    drawmoney.h \
     mainwindow.h \
     pin_window.h \
     transactions_window.h
 
 FORMS += \
     account_view.ui \
+    drawmoney.ui \
     mainwindow.ui \
     pin_window.ui \
     transactions_window.ui
@@ -31,3 +34,9 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/restapidll/build/release/ -lrestapidll
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/restapidll/build/debug/ -lrestapidll
+
+INCLUDEPATH += $$PWD/restapidll
+DEPENDPATH += $$PWD/restapidll
